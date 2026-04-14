@@ -59,26 +59,26 @@ public class DBInteraction {
 
     // This method returns 'true' in case there exist a row in the CLIENTS table with the login and password passed as parameters
 	// If there is not exist a row with such login and password, then it returns 'false'
-	
-	public boolean authentication(String login, String pwd)throws Exception{
-		String list = "SELECT PASSWD FROM CLIENTS WHERE LOGIN = ?";
-		String password=null;
-		try (PreparedStatement pstmt = con.prepareStatement(list)) {
-			pstmt.setString(1, login);
-			ResultSet rs=q.doSelect(list); //rs will contain the row with login passed as parameter
-			if (rs.next()){ //Check if the Resultset is empty
-				password = rs.getString(2);
-			}
-			if (password == null){
-				return(false);
-			}
-            // In case the password for this login in the table is the same as the one passed as parameter
-            return password.equals(pwd);
 
-		} catch (SQLException e) {
-			throw new Exception("Error durante la autenticación.", e);
-	}
-		
+	public boolean authentication(String login, String pwd) throws Exception {
+        String list = "SELECT PASSWD FROM CLIENTS WHERE LOGIN = ?";
+        String password = null;
+        try (PreparedStatement pstmt = con.prepareStatement(list)) {            
+            pstmt.setString(1, login);
+            try (ResultSet rs = pstmt.executeQuery()) { 
+                if (rs.next()) {  //Check if the Resultset is empty
+                    password = rs.getString(1);
+                }
+            }
+            if (password == null) {
+                return false;
+            }
+			// In case the password for this login in the table is the same as the one passed as parameter
+            return password.equals(hashPwdSHA512(pwd));
+
+        } catch (SQLException e) {
+            throw new Exception("Error durante la autenticación.", e);
+        }
     }
 	
 	//This method delete a user from the CLIENTS table. This is the user with login passed as parameter
@@ -322,8 +322,14 @@ public class DBInteraction {
 	//This method unregisters a client from a specific activity
 
 	public void unregactivity(String login, String id) throws Exception{
-		String unregactivity="DELETE FROM REGISTRATIONS WHERE REGISTRATIONS.CLIENT_LOGIN='"+login+"'AND REGISTRATIONS.ACTIVITY_ID="+id;
-		q.doUpdate(unregactivity);
+		String unregactivity = "DELETE FROM REGISTRATIONS WHERE CLIENT_LOGIN = ? AND ACTIVITY_ID = ?";
+		try (PreparedStatement pstmt = con.prepareStatement(unregactivity)) {
+			pstmt.setString(1, login);
+			pstmt.setInt(2, Integer.parseInt(id));
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new Exception("Error al desregistrar actividad.", e);
+		}
 	}
 
 	// AÑADIDO PARTE 4

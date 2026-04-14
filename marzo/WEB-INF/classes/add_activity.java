@@ -4,6 +4,7 @@ import java.awt.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import activities.db.*;
+import org.apache.commons.text.StringEscapeUtils;
 
 public class add_activity extends HttpServlet {
 
@@ -18,11 +19,11 @@ public class add_activity extends HttpServlet {
 
         try {
             int id = Integer.parseInt(req.getParameter("id")); 
-            String name = req.getParameter("name");
-            String description = req.getParameter("description");
-            String initial = req.getParameter("initial");
+            String name = StringEscapeUtils.escapeHtml4(req.getParameter("name"));
+            String description = StringEscapeUtils.escapeHtml4(req.getParameter("description"));
+            String initial = StringEscapeUtils.escapeHtml4(req.getParameter("initial"));
             float cost = Float.parseFloat(req.getParameter("cost"));
-            String pavname = req.getParameter("pavname");
+            String pavname = StringEscapeUtils.escapeHtml4(req.getParameter("pavname"));
             int total = Integer.parseInt(req.getParameter("total"));
             int occupied = Integer.parseInt(req.getParameter("occupied"));
             

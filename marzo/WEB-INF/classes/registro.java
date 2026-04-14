@@ -9,6 +9,8 @@ import java.awt.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 
+import org.apache.commons.text.StringEscapeUtils;
+
 public class registro extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -22,12 +24,12 @@ public class registro extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse res)
     throws IOException, ServletException
     {
-			String username = request.getParameter("username");
-            String password = request.getParameter("password"); 
-            String name = request.getParameter("name");
-            String surname = request.getParameter("surname");
-            String address = request.getParameter("address");
-            String phone = request.getParameter("phone");
+			String username = StringEscapeUtils.escapeHtml4(request.getParameter("username"));
+            String password = StringEscapeUtils.escapeHtml4(request.getParameter("password"));
+            String name = StringEscapeUtils.escapeHtml4(request.getParameter("name"));
+            String surname = StringEscapeUtils.escapeHtml4(request.getParameter("surname"));
+            String address = StringEscapeUtils.escapeHtml4(request.getParameter("address"));
+            String phone = StringEscapeUtils.escapeHtml4(request.getParameter("phone"));
             
             Cookie c1 = new Cookie("username", username);
             c1.setPath("/"); 

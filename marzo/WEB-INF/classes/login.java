@@ -6,6 +6,8 @@ import activities.db.DBInteraction;
 import java.awt.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
+import org.apache.commons.text.StringEscapeUtils;
+
 
 public class login extends HttpServlet {
 
@@ -21,8 +23,9 @@ public class login extends HttpServlet {
     throws IOException, ServletException
     {
         PrintWriter out = res.getWriter ();
-			String usuario = request.getParameter("username");
-            String contraseña = request.getParameter("password"); 
+			String usuario = StringEscapeUtils.escapeHtml4(request.getParameter("username"));
+            String contraseña = StringEscapeUtils.escapeHtml4(request.getParameter("password")); 
+            
             // crear sesión
             HttpSession session = request.getSession(); 
             Integer intentosObj = (Integer) session.getAttribute("intentos");
