@@ -4,7 +4,7 @@ import java.awt.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import activities.db.*;
-
+import org.apache.commons.text.StringEscapeUtils;
 public class list extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException{
@@ -20,8 +20,9 @@ public class list extends HttpServlet {
         //Call for a reference for data base access
 		ArrayList data = new ArrayList();
 	    //Retrieve the parameters from the form
-		type=req.getParameter("type");
-	    text=req.getParameter("text1");
+		type=StringEscapeUtils.escapeHtml4(req.getParameter("type"));
+	    text=StringEscapeUtils.escapeHtml4(req.getParameter("text1"));
+	    order=StringEscapeUtils.escapeHtml4(req.getParameter("order"));
 	  try{
 		DBInteraction db=new DBInteraction();
 		//Depending on the user selected option, calls the properly method of the User object

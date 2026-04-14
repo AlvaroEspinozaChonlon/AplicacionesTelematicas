@@ -4,7 +4,7 @@ import java.awt.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import activities.db.*;
-
+import org.apache.commons.text.StringEscapeUtils;
 public class edit_activity extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
@@ -12,8 +12,7 @@ public class edit_activity extends HttpServlet {
         PrintWriter out = res.getWriter();
 
         try {
-            String idParam = req.getParameter("id");
-            
+            String idParam = StringEscapeUtils.escapeHtml4(req.getParameter("id"));
             if (idParam == null || idParam.isEmpty()) {
                 res.sendRedirect("list_manager.jsp");
                 return;
@@ -63,22 +62,18 @@ public class edit_activity extends HttpServlet {
 
         try {
             int id = Integer.parseInt(req.getParameter("id"));
-            String name = req.getParameter("name");
-            String description = req.getParameter("description");
-            String initial = req.getParameter("initial");
+            String name = StringEscapeUtils.escapeHtml4(req.getParameter("name"));
+            String description = StringEscapeUtils.escapeHtml4(req.getParameter("description"));
+            String initial = StringEscapeUtils.escapeHtml4(req.getParameter("initial"));
             float cost = Float.parseFloat(req.getParameter("cost"));
-            String pavname = req.getParameter("pavname");
+            String pavname = StringEscapeUtils.escapeHtml4(req.getParameter("pavname"));
             int total = Integer.parseInt(req.getParameter("total"));
             int occupied = Integer.parseInt(req.getParameter("occupied"));
             
             DBInteraction db = new DBInteraction();
             
             // Update activity in database
-            String updateQuery = "UPDATE ACTIVITIES SET NAME='" + name + "', DESCRIPTION='" + description + 
-                                "', START_DATE='" + initial + "', COST=" + cost + ", PAVILLION_NAME='" + pavname + 
-                                "', TOTAL_PLACES=" + total + ", OCCUPIED_PLACES=" + occupied + " WHERE ID=" + id;
-            
-            db.updateActivity(updateQuery);
+            db.updateActivity(id, name, description, initial, cost, pavname, total, occupied);
             db.close();
             
             res.sendRedirect("list_manager");

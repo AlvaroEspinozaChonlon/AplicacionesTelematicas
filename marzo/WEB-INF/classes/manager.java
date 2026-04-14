@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 import java.io.*;
+import org.apache.commons.text.StringEscapeUtils;
 
 import activities.db.DBInteraction;
 
@@ -15,7 +16,7 @@ public class manager extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse res)
     throws IOException, ServletException
     {
-        String password = request.getParameter("password_manager"); 
+        String password = StringEscapeUtils.escapeHtml4(request.getParameter("password_manager")); 
 
         HttpSession session = request.getSession(); 
         Integer intentosObj = (Integer) session.getAttribute("intentos");
