@@ -21,7 +21,7 @@ public class Query {
     public int doUpdate(String query) throws SQLException {
 	return stmt.executeUpdate(query);
     }
- 
+
     // Method to close an Statement object
     public void close() throws SQLException {
         stmt.close();

@@ -74,11 +74,7 @@ public class edit_activity extends HttpServlet {
             DBInteraction db = new DBInteraction();
             
             // Update activity in database
-            String updateQuery = "UPDATE ACTIVITIES SET NAME='" + name + "', DESCRIPTION='" + description + 
-                                "', START_DATE='" + initial + "', COST=" + cost + ", PAVILLION_NAME='" + pavname + 
-                                "', TOTAL_PLACES=" + total + ", OCCUPIED_PLACES=" + occupied + " WHERE ID=" + id;
-            
-            db.updateActivity(updateQuery);
+            db.updateActivity(id, name, description, initial, cost, pavname, total, occupied);
             db.close();
             
             res.sendRedirect("list_manager");

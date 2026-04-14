@@ -27,12 +27,7 @@ public class add_activity extends HttpServlet {
             int occupied = Integer.parseInt(req.getParameter("occupied"));
             
             DBInteraction db = new DBInteraction();
-            
-            String insertQuery = "INSERT INTO ACTIVITIES (ID, NAME, DESCRIPTION, START_DATE, COST, PAVILLION_NAME, TOTAL_PLACES, OCCUPIED_PLACES) " +
-                                 "VALUES (" + id + ", '" + name + "', '" + description + "', '" + initial + "', " + 
-                                 cost + ", '" + pavname + "', " + total + ", " + occupied + ")";
-            
-            db.updateActivity(insertQuery);
+            db.updateActivity(id, name, description, initial, cost, pavname, total, occupied);
             db.close();
             
             res.sendRedirect("list_manager");
