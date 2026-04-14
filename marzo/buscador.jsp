@@ -1,16 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="jakarta.servlet.http.HttpSession" %>
 <%
-    // obtener la sesión actual sin crear una nueva (false)
     HttpSession sesion = request.getSession(false);
 
     if (sesion == null || sesion.getAttribute("logged_user") == null) {
         // Si no tiene sesión, redirigimos a inicio 
-        response.sendRedirect("index.html"); 
+        response.sendRedirect("index.jsp"); 
         return; // Detenemos la ejecución para que no cargue el resto del buscador
     }
 
     String loginUsuario = (String) sesion.getAttribute("logged_user");
+
+    if ("gestor".equals(loginUsuario)) {
+        // El gestor tiene su propia lista, no usa este buscador
+        response.sendRedirect("list_manager");
+        return;
+    }
 
     String nombre = "";
     String apellido = "";
@@ -126,13 +131,13 @@
 </style>
 </head>
 <body>
-    <div class="header-user">
-        Hola, <%= loginUsuario %>! <br>
-        <a href="logout" class="logout-link">Cerrar sesión</a>
-    </div>
+    <div class="header-user">
+         Hello, <%= loginUsuario %>! <br>
+        <a href="logout" class="logout-link">Logout</a>
+    </div>
 
     <div class="container">
-        <h1> Sporting Activities Searching Application: Universidad Carlos III de Madrid </h1>
+       <h1> Sporting Activities Searching Application: Universidad Carlos III de Madrid </h1>
         <div class="info-text">
             This application allows you visualizing all the sporting activities that are at present in Universidad Carlos III
             de Madrid in its three campus (Getafe, Leganes and Colmenarejo)

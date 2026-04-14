@@ -1,16 +1,16 @@
 <table align="center" border="0">
   <tr>
     <td align="center">
-      <h1 align="middle">
-        <img align="middle" src="images/telematica.gif"/>
-      </h1>
+      <font size="15">
+        <b>Sporting activities Manager</b>
+      </font>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <font size="-2">
-        <b>Sporting activities Manager</b>
-      </font>
+      <h1 align="middle">
+        <img align="middle" src="images/telematica.png" width="140"/>
+      </h1>
     </td>
   </tr>
 </table>

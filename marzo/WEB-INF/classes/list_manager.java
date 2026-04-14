@@ -14,6 +14,13 @@ public class list_manager extends HttpServlet {
         //Call for a reference for data base access
 		ArrayList data = new ArrayList();
 
+        HttpSession session = req.getSession(false);
+
+        if (session == null || !"gestor".equals(session.getAttribute("logged_user"))) {
+            res.sendRedirect("index.jsp");
+            return; 
+        }
+
 	    try{
 		    DBInteraction db=new DBInteraction();
 
@@ -35,8 +42,6 @@ public class list_manager extends HttpServlet {
                 RequestDispatcher outact=req.getRequestDispatcher("outact_manager.jsp?id="+id+"&name="+name+"&description="+description+"&initial="+initial+"&cost="+cost+"&pavname="+pavname+"&total="+total+"&occupied="+occupied);
                 outact.include(req, res);
             }
-            RequestDispatcher end=req.getRequestDispatcher("end.jsp");
-            end.include(req, res);
             db.close();
         } //end try
 	  catch (Exception e){  }

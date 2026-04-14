@@ -52,7 +52,7 @@ public class login extends HttpServlet {
                     if (intentos >= 3) {
                         // Al tercer fallo, invalidar y enviar al inicio y se resetean los intentos
                         session.invalidate(); 
-                        res.sendRedirect("index.html"); 
+                        res.sendRedirect("index.jsp"); 
                     } else {
                         // Volver a mostrar login con mensaje de error
                         res.sendRedirect("login.jsp?error=true");

@@ -2,6 +2,19 @@
 <%@ page import="java.net.URLDecoder" %>
 <%@ page import="java.nio.charset.StandardCharsets" %>
 <%
+    if (session != null && session.getAttribute("logged_user") != null) {
+
+        String user = (String) session.getAttribute("logged_user");
+
+        if ("gestor".equals(user)) {
+            response.sendRedirect("list_manager");
+            return;
+        } else {
+            response.sendRedirect("buscador.jsp");
+            return;
+        }
+    }
+
     String username = new String();
     String password = new String();
     String name = new String();
@@ -27,6 +40,21 @@
             else if (cookie.getName().equals("phone")) 
                 phone = value;
         }
+    }
+
+    boolean datosCompletos = (
+        !username.isEmpty() && 
+        !password.isEmpty() && 
+        !name.isEmpty() && 
+        !surname.isEmpty() && 
+        !address.isEmpty() && 
+        !phone.isEmpty()
+    );
+
+    if (!datosCompletos) {
+        // Si falta aunque sea uno, lo mandamos de vuelta al formulario
+        response.sendRedirect("registro.jsp");
+        return;
     }
 %>
 
