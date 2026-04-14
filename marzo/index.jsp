@@ -106,19 +106,19 @@
 <body>
 
     <div class="card">
-        <h1>Bienvenido</h1>
+        <h1>Welcome</h1>
 
         <div class="button-group">
             <button class="login" onclick="location.href='login.jsp'">
-                Iniciar sesión
+                Log in
             </button>
 
             <button class="register" onclick="location.href='registro.jsp'">
-                Crear cuenta
+                Register
             </button>
 
             <button class="gestor" onclick="location.href='manager.jsp'">
-                Acceso gestor
+                Manager Access
             </button>
         </div>
     </div>
