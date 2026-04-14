@@ -18,7 +18,6 @@ public class add_activity extends HttpServlet {
         PrintWriter out = res.getWriter();
 
         try {
-            int id = Integer.parseInt(req.getParameter("id")); 
             String name = StringEscapeUtils.escapeHtml4(req.getParameter("name"));
             String description = StringEscapeUtils.escapeHtml4(req.getParameter("description"));
             String initial = StringEscapeUtils.escapeHtml4(req.getParameter("initial"));
@@ -28,7 +27,7 @@ public class add_activity extends HttpServlet {
             int occupied = Integer.parseInt(req.getParameter("occupied"));
             
             DBInteraction db = new DBInteraction();
-            db.updateActivity(id, name, description, initial, cost, pavname, total, occupied);
+            db.addact(name, description, initial, cost, pavname, total, occupied);
             db.close();
             
             res.sendRedirect("list_manager");

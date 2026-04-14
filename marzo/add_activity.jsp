@@ -8,7 +8,6 @@
     <hr>
     <form action="add_activity" method="post">
         <table>
-            <tr><td>ID:</td><td><input type="number" name="id" required></td></tr>
             <tr><td>Name:</td><td><input type="text" name="name" required></td></tr>
             <tr><td>Description:</td><td><textarea name="description"></textarea></td></tr>
             <tr><td>Initial Date:</td><td><input type="text" name="initial" placeholder="YYYY-MM-DD"></td></tr>
