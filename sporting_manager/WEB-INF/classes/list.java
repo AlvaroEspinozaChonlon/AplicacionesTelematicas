@@ -67,7 +67,7 @@ public class list extends HttpServlet {
 	           }
 	        }
             else {
-                out.println("<h1>List of activities according to the searching conditions </h1><table>");
+                out.println("<h1 style='color:#7F77DD;'>List of activities according to the searching conditions </h1><table>");
 	            out.println("<tr><b><td>ID</td><td>NAME</td><td>DESCRIPTION</td><td>START_DATE</td><td>COST</td><td>PAVILLION_NAME</td><td>TOTAL_PLACES</td><td>OCCUPIED_PLACES</td></b></tr><p>");       
 	            while (rs.next()) {
 					int id = rs.getInt("ID");
