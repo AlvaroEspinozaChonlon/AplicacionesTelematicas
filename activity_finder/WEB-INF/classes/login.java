@@ -42,10 +42,6 @@ public class login extends HttpServlet {
                     
                     session.setAttribute("logged_user", usuario);
                     session.setAttribute("intentos", 0);
-
-                    Cookie usercookie = new Cookie("username", usuario); 
-                    usercookie.setPath("/");
-                    res.addCookie(usercookie);
                     
                     res.sendRedirect("buscador.jsp");
                 } else {

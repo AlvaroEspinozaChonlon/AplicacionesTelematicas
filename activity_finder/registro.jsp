@@ -85,15 +85,15 @@
 </head>
 <body style="text-align:center; font-family:Arial; margin-top:30px;">
 
-    <h2>Registro</h2>
+    <h2>Register</h2>
     <form action="registro" method=POST>
-        <input type="text" name="name" placeholder="Nombre" required value="<%= name %>"><br><br>
-        <input type="text" name="surname" placeholder="Apellido" required value="<%= surname %>"><br><br>
-        <input type="text" name="username" placeholder="Usuario" required value="<%= username %>"><br><br>
-        <input type="password" name="password" placeholder="Contraseña" required value="<%= password %>"><br><br>
-        <input type="text" name="address" placeholder="Dirección" required value="<%= address %>"><br><br>
-        <input type="text" name="phone" placeholder="Teléfono" required value="<%= phone %>"><br><br>
-        <button type="submit">Registrarse</button>
+        <input type="text" name="name" placeholder="Name" required value="<%= name %>"><br><br>
+        <input type="text" name="surname" placeholder="Surname" required value="<%= surname %>"><br><br>
+        <input type="text" name="username" placeholder="Username" required value="<%= username %>"><br><br>
+        <input type="password" name="password" placeholder="Password" required value="<%= password %>"><br><br>
+        <input type="text" name="address" placeholder="Address" required value="<%= address %>"><br><br>
+        <input type="text" name="phone" placeholder="Phone" required value="<%= phone %>"><br><br>
+        <button type="submit">Submit</button>
     </form>
     <div class="nav-buttons">
         <a href="login.jsp" class="btn-secondary">I already have an account</a>

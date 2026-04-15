@@ -25,7 +25,8 @@
 <body>
  <%@ include file="banner.include" %>
 <div class="header-user">
-    Hello, <%= loginUsuario %>! <br>
+    <!-- Hello, <%= loginUsuario %>! <br> -->
+    Hello, Manager! <br>
     <a href="logout" class="logout-link">Logout</a>
 </div>
 <h1> List of Activities that fulfill the selected criterion </h1>

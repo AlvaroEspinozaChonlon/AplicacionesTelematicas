@@ -113,7 +113,7 @@
     </style>
 </head>
 <body>
-    <h1>Tus Cookies</h1>
+    <h1>Confirm Registration</h1>
     <div class="cookies-container">
 
 
@@ -126,11 +126,11 @@
 
     <form method="POST">
         <button type="submit" formaction="confirm">
-            Sí (Ir al Login)
+            Yes (Go to Login)
         </button>
 
         <button type="submit" formaction="registro.jsp">
-            No (Corregir datos)
+            No (Correct Data)
         </button>
     </form>
     </div>
