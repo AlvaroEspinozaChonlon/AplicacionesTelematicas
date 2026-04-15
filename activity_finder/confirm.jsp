@@ -63,53 +63,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Cookies</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .cookies-container {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            color: #333;
-        }
-        .cookie-item {
-            padding: 10px;
-            margin: 10px 0;
-            background-color: #fff;
-            border-left: 3px solid #007bff;
-            word-break: break-all;
-        }
-        .buttons {
-            display: flex;
-            gap: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-        }
-        .btn-yes {
-            background-color: #28a745;
-            color: white;
-        }
-        .btn-no {
-            background-color: #dc3545;
-            color: white;
-        }
-        button:hover {
-            opacity: 0.9;
-        }
-    </style>
+    
 </head>
 <body>
     <h1>Confirm Registration</h1>

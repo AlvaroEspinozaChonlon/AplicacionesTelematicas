@@ -5,27 +5,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <style>
-        .header-user {
-            text-align: right;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            margin-right: 80px;
-            margin-bottom: 10px;
-            color: #555;
-            }
-        .logout-link {
-            color: #d9534f;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
 <title>Sporting Activities Searching Application</title>
 </head>
 <body>
- <%@ include file="banner.include" %>
+<%@ include file="banner.include" %>
 <div class="header-user">
-    <!-- Hello, <%= loginUsuario %>! <br> -->
     Hello, Manager! <br>
     <a href="logout" class="logout-link">Logout</a>
 </div>

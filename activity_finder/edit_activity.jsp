@@ -18,48 +18,55 @@ session.removeAttribute("activity");
     <h1>Edit Activity</h1>
     
     <form method="POST" action="edit_activity">
-        
         <div class="form-group">
             <label for="id">Activity ID:</label>
-            <input type="text" id="id" name="id" value="<%=activity.getid()%>" readonly class="readonly">
+            <input type="text" id="id" value="<%=activity.getid()%>" readonly class="readonly" disabled>
             <input type="hidden" name="id" value="<%=activity.getid()%>">
         </div>
-        
+        <br>
         <div class="form-group">
             <label for="name">Activity Name:</label>
             <input type="text" id="name" name="name" value="<%=activity.getname()%>" required>
         </div>
         
+        <br>
         <div class="form-group">
             <label for="description">Description:</label>
             <textarea id="description" name="description" required><%=activity.getdescription()%></textarea>
         </div>
+        <br>
         
         <div class="form-group">
             <label for="initial">Initial Date:</label>
             <input type="text" id="initial" name="initial" value="<%=activity.getinitial()%>" required>
         </div>
         
+        <br>
         <div class="form-group">
             <label for="cost">Cost:</label>
             <input type="number" id="cost" name="cost" value="<%=activity.getcost()%>" step="0.01" required>
         </div>
         
+        <br>
         <div class="form-group">
             <label for="pavname">Pavillion Name:</label>
             <input type="text" id="pavname" name="pavname" value="<%=activity.getpavname()%>" required>
         </div>
         
+        <br>
         <div class="form-group">
             <label for="total">Total Places:</label>
             <input type="number" id="total" name="total" value="<%=activity.gettotal()%>" required>
         </div>
         
+        <br>
+        <br>
         <div class="form-group">
             <label for="occupied">Occupied Places:</label>
             <input type="number" id="occupied" name="occupied" value="<%=activity.getoccupied()%>" required>
         </div>
         
+        <br>
         <div class="button-group">
             <button type="submit" class="btn-submit">Update Activity</button>
             <a href="list_manager" class="btn-cancel">Go back</a>

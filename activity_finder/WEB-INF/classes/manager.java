@@ -26,7 +26,7 @@ public class manager extends HttpServlet{
         try {
             boolean correctlogin = password.equals("admin");
     
-             if (correctlogin) {
+            if (correctlogin) {
                 out.println("Login successful!: gestor");
                 
                 session.setAttribute("logged_user", "gestor");
@@ -35,9 +35,9 @@ public class manager extends HttpServlet{
                 usercookie.setPath("/");
                 res.addCookie(usercookie);
                 res.sendRedirect("list_manager");
-             } else{
-                res.sendRedirect("manager.jsp");
-             }
+            } else{
+                res.sendRedirect("manager.jsp?error=true");
+            }
         } catch (Exception e) {
             out.println("error: " + e.getMessage());
         }
