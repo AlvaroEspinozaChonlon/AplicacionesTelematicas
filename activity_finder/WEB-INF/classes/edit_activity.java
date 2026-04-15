@@ -20,10 +20,8 @@ public class edit_activity extends HttpServlet {
 
             int activityId = Integer.parseInt(idParam);
             
-            // Create database connection
             DBInteraction db = new DBInteraction();
             
-            // Get the activity from database
             ArrayList activities = db.listallact();
             Activity activity = null;
             
@@ -42,7 +40,6 @@ public class edit_activity extends HttpServlet {
                 return;
             }
             
-            // Store activity in request and forward to JSP
             req.setAttribute("activity", activity);
             RequestDispatcher dispatcher = req.getRequestDispatcher("edit_activity.jsp");
             dispatcher.forward(req, res);
@@ -56,7 +53,6 @@ public class edit_activity extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        // Handle the form submission for updating the activity
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
 
@@ -72,7 +68,6 @@ public class edit_activity extends HttpServlet {
             
             DBInteraction db = new DBInteraction();
             
-            // Update activity in database
             db.updateActivity(id, name, description, initial, cost, pavname, total, occupied);
             db.close();
             

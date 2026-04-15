@@ -13,12 +13,11 @@ public class logout extends HttpServlet {
             session.invalidate(); 
         }
         
-        // Para borrar una cookie, hay que crear una igual pero con tiempo 0
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie c : cookies) {
-                c.setMaxAge(0); // Le decimos al navegador que expire YA 
-                c.setPath("/"); // Importante que sea el mismo path que al crearla
+                c.setMaxAge(0); 
+                c.setPath("/"); 
                 response.addCookie(c);
             }
         }

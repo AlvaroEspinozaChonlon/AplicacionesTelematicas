@@ -26,11 +26,9 @@ public class login extends HttpServlet {
 			String usuario = StringEscapeUtils.escapeHtml4(request.getParameter("username"));
             String contraseña = StringEscapeUtils.escapeHtml4(request.getParameter("password")); 
             
-            // crear sesión
             HttpSession session = request.getSession(); 
             Integer intentosObj = (Integer) session.getAttribute("intentos");
 
-            // 3. Si es null lo inicializamos a 0
             int intentos = (intentosObj == null) ? 0 : intentosObj.intValue();   
 
             try {
@@ -49,11 +47,9 @@ public class login extends HttpServlet {
                     session.setAttribute("intentos", intentos);
                     
                     if (intentos >= 3) {
-                        // Al tercer fallo, invalidar y enviar al inicio y se resetean los intentos
                         session.invalidate(); 
                         res.sendRedirect("index.jsp"); 
                     } else {
-                        // Volver a mostrar login con mensaje de error
                         res.sendRedirect("login.jsp?error=true");
                     }
                 }

@@ -52,7 +52,6 @@
     );
 
     if (!datosCompletos) {
-        // Si falta aunque sea uno, lo mandamos de vuelta al formulario
         response.sendRedirect("registro.jsp");
         return;
     }

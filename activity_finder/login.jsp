@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-    // 1. Verificación de sesión: Si ya está logueado, fuera de aquí
     if (session != null && session.getAttribute("logged_user") != null) {
         response.sendRedirect("buscador.jsp");
         return; 
     }
 
-    // 2. Lógica de Cookies para recordar el usuario
     String userCookie = "";
     String passCookie = "";
     Cookie[] cookies = request.getCookies();

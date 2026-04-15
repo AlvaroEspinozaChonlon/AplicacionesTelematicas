@@ -17,15 +17,15 @@ public class list extends HttpServlet {
         String type;
 	    String text;
 	    String order;
-        //Call for a reference for data base access
+
 		ArrayList data = new ArrayList();
-	    //Retrieve the parameters from the form
+	    
 		type=StringEscapeUtils.escapeHtml4(req.getParameter("type"));
 	    text=StringEscapeUtils.escapeHtml4(req.getParameter("text1"));
 	    order=StringEscapeUtils.escapeHtml4(req.getParameter("order"));
 	  try{
 		DBInteraction db=new DBInteraction();
-		//Depending on the user selected option, calls the properly method of the User object
+		
 	    if (type.equals("all_activities")){
 	        data=db.listallact(); 
 	    }
@@ -49,7 +49,6 @@ public class list extends HttpServlet {
 			data=db.listactpav(text);
 		}
 
-        //Depending on if we list pavillions or activities, the rendering will be different
 		if (type.equals("all_pavillions")){
 		    RequestDispatcher layout=req.getRequestDispatcher("layoutpav.jsp");
 		    layout.include(req, res);

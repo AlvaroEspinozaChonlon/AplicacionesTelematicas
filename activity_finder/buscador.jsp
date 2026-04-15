@@ -4,15 +4,13 @@
     HttpSession sesion = request.getSession(false);
 
     if (sesion == null || sesion.getAttribute("logged_user") == null) {
-        // Si no tiene sesión, redirigimos a inicio 
         response.sendRedirect("index.jsp"); 
-        return; // Detenemos la ejecución para que no cargue el resto del buscador
+        return; 
     }
 
     String loginUsuario = (String) sesion.getAttribute("logged_user");
 
     if ("gestor".equals(loginUsuario)) {
-        // El gestor tiene su propia lista, no usa este buscador
         response.sendRedirect("list_manager");
         return;
     }

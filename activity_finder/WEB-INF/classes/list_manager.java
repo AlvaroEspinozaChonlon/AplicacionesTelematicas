@@ -11,8 +11,8 @@ public class list_manager extends HttpServlet {
         String type;
 	    String text;
 	    String order;
-        //Call for a reference for data base access
-		ArrayList data = new ArrayList();
+
+        ArrayList data = new ArrayList();
 
         HttpSession session = req.getSession(false);
 
